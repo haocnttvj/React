@@ -68,3 +68,41 @@ html {
     width: 100%;
     height: 200px;
 }
+.content {
+    width: 1024px;
+    margin: 0 auto;
+    height: 300px;
+}
+
+.new-posts {
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+
+.list-category {
+    width: 30%;
+    float: left;
+    height: 100%;
+}
+
+.hr {
+    width: 80%;
+    border: 1px solid #dbd8d8;
+    float: left;
+}
+
+.first-post {
+    width: 100%;
+    float: left;
+}
+
+.first-post img {
+    text-align: center;
+    width: 80%;
+}
+
+.category-name {
+    float: left;
+    font-size: 18px;
+}
