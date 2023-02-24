@@ -1,5 +1,6 @@
 .container{
     height: 100vh;
+    margin: auto;
 }
 .nav{
     height: 10vh;
@@ -19,6 +20,7 @@
     margin: 20px;
 
     border: 2px solid #DBDBDB;
+    box-shadow: #DBDBDB;
 }
 img{
    width: 100%; 
