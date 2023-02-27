@@ -8,3 +8,4 @@ function maxNumber(a,b){
 console.log("Max Number:",maxNumber(array[0], array[1]));
 console.log("Max Number:",maxNumber(array[2], array[1]));
 console.log("Max Number:",maxNumber(array[2], array[3]));
+
