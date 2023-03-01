@@ -1,4 +1,4 @@
-let array = [6,9,8,9,7,10]
+let array = [6,9,8,9,7,2]
 let averageGrade = 0;
 
 function findAverageGrade(array){
@@ -17,5 +17,5 @@ function grade(averageGrade){
 }
 
 findAverageGrade(array);
-console.log(averageGrade);
+console.log("11-marks-average-grade");
 console.log(grade(averageGrade));
