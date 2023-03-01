@@ -1,0 +1,16 @@
+#sidebar-menu {
+    width: 150px;
+}
+
+@media (max-width:576px) {
+    #sidebar-menu {
+        width: 60px;
+    }
+}
+#icon {
+    position: absolute;
+    right: 5%;
+    top: 0;
+    font-size: 64px;
+    color: #576574;
+}
