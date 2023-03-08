@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Mouse Events - Button Demo</title>
+  </head>
+  <body>
+    <button id="btn">
+      Click me with any mouse button: left, right, middle, ...
+    </button>
+    <p id="message"></p>
+    <script>
+      const btn = document.querySelector("#btn");
+      btn.addEventListener("contextmenu", function (event) {
+        event.preventDefault();
+      });
+      btn.addEventListener("mouseup", function (event) {
+        const mouse = document.querySelector("#message");
+        switch (event.button) {
+          case 0:
+            mouse.textContent = "Left mouse button clicked.";
+            break;
+          case 1:
+            mouse.textContent = "Middle mouse button clicked.";
+            break;
+          case 2:
+            mouse.textContent = "Right mouse button clicked.";
+            break;
+          default:
+            mouse.textContent = "Unknown mouse button code: ${event.button}";
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>
