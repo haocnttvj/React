@@ -9,12 +9,13 @@
   <body>
     <h1>Todo list</h1>
     <form>
-      <input type="text" / placeholder="Add Todo">
-      <button type="submit">Add</button>
+      <input id="todo" name="todo" type="text" placeholder="Add Todo" />
+      <button id="btn" type="submit">Add</button>
     </form>
     <ul></ul>
     <script>
       const todos = [];
+      let todoIndex = null;
 
       const todoList = document.querySelector("ul");
 
@@ -22,12 +23,25 @@
 
       form.addEventListener("submit", function (event) {
         event.preventDefault();
-        const input = document.querySelector("input");
+        const input = form.elements["todo"];
         const value = input.value;
-        todos.push(value);
 
-        input.value = "";
-        render();
+        if (value.trim() === "") {
+          alert("input your task");
+        } else {
+          if (todoIndex == null) {
+            todos.push(value);
+          } else {
+            todos.splice(todoIndex, 1, value);
+          }
+          input.value = "";
+          todoIndex = null;
+
+          const button = form.querySelector("button");
+          button.innerText = "Add";
+
+          render();
+        }
       });
 
       function handleDelete(index) {
@@ -37,9 +51,13 @@
       }
 
       function handleEdit(index) {
-        const value = prompt("value: ");
-        todos.splice(index, 1, value);
-        console.log(todos);
+        const input = form.elements["todo"];
+        input.value = todos[index];
+
+        const button = document.querySelector("#btn");
+        button.innerText = "Edit";
+
+        todoIndex = index;
 
         render();
       }
@@ -47,10 +65,11 @@
       function render() {
         const todoElements = todos.map(function (todo) {
           return `
-            <span>* ${todo}</span>
-            <button id="edit">Edit</button>
-            <button id="delete">Delete</button>
-            <br>
+            <li>
+              <span>${todo}</span>
+              <button id="edit">Edit</button>
+              <button id="delete">Delete</button>
+            </li>
             `;
         });
 
@@ -59,18 +78,29 @@
         const deleteButtons = document.querySelectorAll("#delete");
         const editButtons = document.querySelectorAll("#edit");
 
-        for (let index = 0; index < deleteButtons.length; index++) {
-          const deleteButton = deleteButtons[index];
+        // for (let index = 0; index < deleteButtons.length; index++) {
+        //   const deleteButton = deleteButtons[index];
+        //   deleteButton.addEventListener("click", function () {
+        //     handleDelete(index);
+        //   });
+        // }
+        deleteButtons.forEach(function (deleteButton, index) {
           deleteButton.addEventListener("click", function () {
             handleDelete(index);
           });
-        }
-        for (let index = 0; index < editButtons.length; index++) {
-          const editButton = editButtons[index];
+        });
+
+        // for (let index = 0; index < editButtons.length; index++) {
+        //   const editButton = editButtons[index];
+        //   editButton.addEventListener("click", function () {
+        //     handleEdit(index);
+        //   });
+        // }
+        editButtons.forEach(function (editButton, index) {
           editButton.addEventListener("click", function () {
             handleEdit(index);
           });
-        }
+        });
       }
 
       function initialApp() {
